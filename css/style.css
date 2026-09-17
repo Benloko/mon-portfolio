@@ -235,37 +235,37 @@ button {
   gap: 0.6rem;
 }
 
-/* Bouton Hamburger Mobile (3 traits) */
+/* Bouton Hamburger Mobile Minimaliste (3 traits fins) */
 .nav-toggle {
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 4px;
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  gap: 3.5px;
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  border: none;
   cursor: pointer;
   padding: 0;
-  transition: var(--transition);
-}
-
-.nav-toggle:hover {
-  background: rgba(255, 255, 255, 0.15);
+  margin-left: 0.2rem;
 }
 
 .nav-toggle-bar {
-  width: 18px;
-  height: 2px;
+  width: 15px;
+  height: 1.5px;
+  background-color: var(--text-secondary);
+  border-radius: 1px;
+  transition: transform 0.2s ease, opacity 0.15s ease, background-color 0.2s ease;
+}
+
+.nav-toggle:hover .nav-toggle-bar,
+.nav-toggle.active .nav-toggle-bar {
   background-color: #fff;
-  border-radius: 2px;
-  transition: transform 0.25s ease, opacity 0.2s ease;
 }
 
 .nav-toggle.active .nav-toggle-bar:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
+  transform: translateY(5px) rotate(45deg);
 }
 
 .nav-toggle.active .nav-toggle-bar:nth-child(2) {
@@ -273,10 +273,10 @@ button {
 }
 
 .nav-toggle.active .nav-toggle-bar:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg);
+  transform: translateY(-5px) rotate(-45deg);
 }
 
-/* Menu Déroulant Mobile */
+/* Menu Déroulant Mobile Simple */
 .mobile-nav-menu {
   display: none;
 }
@@ -1168,6 +1168,13 @@ select.form-input option {
   .nav-menu {
     display: none;
   }
+  .navbar {
+    padding: 0.4rem 0.85rem;
+  }
+  .nav-actions .btn-whatsapp {
+    padding: 0.26rem 0.65rem;
+    font-size: 0.72rem;
+  }
   .nav-toggle {
     display: flex;
   }
@@ -1175,29 +1182,27 @@ select.form-input option {
     display: flex;
     flex-direction: column;
     max-width: 820px;
-    margin: 0.5rem auto 0 auto;
-    background: rgba(13, 18, 32, 0.98);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 16px;
-    padding: 0.75rem;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85);
-    animation: mobileMenuFade 0.2s ease-out;
+    margin: 0.35rem auto 0 auto;
+    background: rgba(8, 12, 20, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 0.3rem 0.4rem;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5);
+    animation: mobileMenuFade 0.15s ease-out;
   }
   .mobile-nav-link {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.7rem 0.85rem;
-    border-radius: 8px;
-    color: var(--text-primary);
-    font-size: 0.92rem;
-    font-weight: 600;
+    display: block;
+    padding: 0.55rem 0.75rem;
+    border-radius: 6px;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
     transition: var(--transition);
   }
   .mobile-nav-link:hover, .mobile-nav-link:active {
-    background: rgba(56, 189, 248, 0.12);
+    background: rgba(255, 255, 255, 0.05);
     color: var(--cyan-400);
   }
   .admin-top-bar {

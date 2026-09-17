@@ -891,58 +891,14 @@ function App() {
           </div>
         </nav>
 
-        {/* Menu Déroulant Mobile */}
+        {/* Menu Déroulant Mobile Simple & Épuré */}
         {mobileMenuOpen && (
           <div className="mobile-nav-menu">
-            <a href="#hero" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
-              <span>🏠</span>
-              <span>Accueil</span>
-            </a>
-            <a href="#about" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
-              <span>👨‍💻</span>
-              <span>À Propos</span>
-            </a>
-            <a href="#skills" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
-              <span>⚡</span>
-              <span>Compétences</span>
-            </a>
-            <a href="#projects" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
-              <span>💼</span>
-              <span>Projets (5+)</span>
-            </a>
-            <a href="#contact" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
-              <span>📬</span>
-              <span>Contact</span>
-            </a>
-
-            <div style={{ borderTop: "1px solid rgba(255, 255, 255, 0.08)", marginTop: "0.5rem", paddingTop: "0.75rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-              <a 
-                href={profile.whatsappUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="btn btn-whatsapp"
-                style={{ width: "100%", justifyContent: "center" }}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Discuter sur WhatsApp
-              </a>
-              <a 
-                href="#admin" 
-                className="mobile-nav-link"
-                style={{ fontSize: "0.8rem", color: "var(--text-muted)", justifyContent: "center" }}
-                onClick={(e) => {
-                  e.preventDefault();
-                  setMobileMenuOpen(false);
-                  if (isAdmin) {
-                    setCurrentView("admin");
-                  } else {
-                    setCurrentView("admin_login");
-                  }
-                }}
-              >
-                🔒 Espace Administration
-              </a>
-            </div>
+            <a href="#hero" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Accueil</a>
+            <a href="#about" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>À Propos</a>
+            <a href="#skills" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Compétences</a>
+            <a href="#projects" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Projets (5+)</a>
+            <a href="#contact" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Contact</a>
           </div>
         )}
       </header>
@@ -951,11 +907,6 @@ function App() {
         {/* SECTION HÉRO */}
         <section id="hero" className="hero-section">
           <div className="container">
-            <div className="hero-pill">
-              <span className="status-dot"></span>
-              <span>{profile.location} · Disponible pour projets & opportunités</span>
-            </div>
-
             <h1 className="hero-title">
               Salut, je suis <span className="text-gradient">{profile.name}</span>
             </h1>
