@@ -28,8 +28,8 @@ const defaultProjects = [
     shortDescription: "Application de tontine en ligne et d'épargne collective inter-entreprises avec protocoles de sécurité financière renforcés.",
     fullDescription: "CrediFlow modernise le système traditionnel de tontine pour les entreprises et les groupes professionnels. La plateforme garantit la traçabilité intégrale des cotisations, la sécurité des transactions et la redistribution automatisée selon les cycles convenus.",
     stack: ["React", "PHP", "Laravel", "PostgreSQL", "REST API"],
-    githubUrl: "https://github.com/Benloko",
-    liveUrl: "https://github.com/Benloko",
+    githubUrl: "https://github.com/OlympBlack/MPME-CrediFlow",
+    liveUrl: "https://github.com/OlympBlack/MPME-CrediFlow",
     challenges: [
       "Sécurisation stricte des flux de transactions et des données financières sensibles.",
       "Automatisation des cycles de rotation et de calcul des parts de tontine pour les groupes.",
@@ -62,8 +62,8 @@ const defaultProjects = [
     shortDescription: "Plateforme web de recrutement sur mesure permettant aux candidats de postuler en ligne et transmettre leur CV sans déplacement.",
     fullDescription: "Développée sur mesure pour fluidifier les processus d'embauche d'une entreprise, Vaybe supprime les contraintes de dépôts physiques de dossiers. Les candidats consultent les postes ouverts, transmettent leur CV et pièces jointes en quelques clics, tandis que les recruteurs disposent d'un espace de tri et d'évaluation centralisé.",
     stack: ["React", "JavaScript", "PHP", "Laravel", "PostgreSQL"],
-    githubUrl: "https://github.com/Benloko",
-    liveUrl: "https://github.com/Benloko",
+    githubUrl: "https://github.com/Benloko/vaybe",
+    liveUrl: "https://github.com/Benloko/vaybe",
     challenges: [
       "Gestion et téléversement sécurisé de documents et CV (PDF/Word).",
       "Interface fluide et rapide sur mobile pour faciliter les candidatures des postulants.",
@@ -137,7 +137,13 @@ function App() {
     try {
       const parsed = JSON.parse(saved);
       const existingIds = new Set(parsed.map(p => p.id));
-      const merged = [...parsed];
+      const merged = parsed.map(p => {
+        const dp = defaultProjects.find(d => d.id === p.id);
+        if (dp && (p.githubUrl === "https://github.com/Benloko" || !p.githubUrl)) {
+          return { ...p, githubUrl: dp.githubUrl, liveUrl: dp.liveUrl };
+        }
+        return p;
+      });
       defaultProjects.forEach(dp => {
         if (!existingIds.has(dp.id)) {
           merged.unshift(dp);
