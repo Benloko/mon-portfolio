@@ -163,6 +163,7 @@ function App() {
   });
 
   const [showPassword, setShowPassword] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [adminLoginModalOpen, setAdminLoginModalOpen] = useState(false);
   const [adminPasswordInput, setAdminPasswordInput] = useState("");
   const [adminPasswordError, setAdminPasswordError] = useState("");
@@ -877,8 +878,73 @@ function App() {
             <a href={profile.whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">
               WhatsApp
             </a>
+            <button 
+              className={`nav-toggle ${mobileMenuOpen ? "active" : ""}`}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Menu de navigation"
+              aria-expanded={mobileMenuOpen}
+            >
+              <span className="nav-toggle-bar"></span>
+              <span className="nav-toggle-bar"></span>
+              <span className="nav-toggle-bar"></span>
+            </button>
           </div>
         </nav>
+
+        {/* Menu Déroulant Mobile */}
+        {mobileMenuOpen && (
+          <div className="mobile-nav-menu">
+            <a href="#hero" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
+              <span>🏠</span>
+              <span>Accueil</span>
+            </a>
+            <a href="#about" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
+              <span>👨‍💻</span>
+              <span>À Propos</span>
+            </a>
+            <a href="#skills" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
+              <span>⚡</span>
+              <span>Compétences</span>
+            </a>
+            <a href="#projects" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
+              <span>💼</span>
+              <span>Projets (5+)</span>
+            </a>
+            <a href="#contact" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
+              <span>📬</span>
+              <span>Contact</span>
+            </a>
+
+            <div style={{ borderTop: "1px solid rgba(255, 255, 255, 0.08)", marginTop: "0.5rem", paddingTop: "0.75rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+              <a 
+                href={profile.whatsappUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn btn-whatsapp"
+                style={{ width: "100%", justifyContent: "center" }}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Discuter sur WhatsApp
+              </a>
+              <a 
+                href="#admin" 
+                className="mobile-nav-link"
+                style={{ fontSize: "0.8rem", color: "var(--text-muted)", justifyContent: "center" }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setMobileMenuOpen(false);
+                  if (isAdmin) {
+                    setCurrentView("admin");
+                  } else {
+                    setCurrentView("admin_login");
+                  }
+                }}
+              >
+                🔒 Espace Administration
+              </a>
+            </div>
+          </div>
+        )}
       </header>
 
       <main>
